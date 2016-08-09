@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Sunshine</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_refresh">Refresh</string>
+
+    <string-array name="forecastList">
+        <item>Today Sunny - 88/63</item>
+        <item>Tomorrow - Foggy - 70/40</item>
+        <item>Tuesday - Rainy - 56/78</item>
+        <item>Wednesday - Sunny - 76/45</item>
+        <item>Thursday - Rainy - 84/65</item>
+        <item>Friday - Sunny - 79/65</item>
+    </string-array>
+
+</resources>
