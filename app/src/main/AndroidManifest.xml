@@ -27,6 +27,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.android.sunshine.app.ui.activity.MainActivity" />
         </activity>
+
+        <activity
+            android:name=".ui.activity.SettingsActivity"
+            android:label="@string/settings_activity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
