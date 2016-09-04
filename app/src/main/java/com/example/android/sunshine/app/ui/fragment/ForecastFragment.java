@@ -15,11 +15,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+=======
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+>>>>>>> 04aaad6bd9704311fed3c92587cc4684e3a482fb
 
 import com.example.android.sunshine.app.BuildConfig;
 import com.example.android.sunshine.app.R;
@@ -59,25 +64,42 @@ public class ForecastFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
         //Add this in order that fragment handles menu events
+=======
+        //Add this inrder that fragment handles menu events
+>>>>>>> 04aaad6bd9704311fed3c92587cc4684e3a482fb
         setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+<<<<<<< HEAD
         mRootView= inflater.inflate(R.layout.fragment_forecast, container, false);
         mForecastList  = new ArrayList<>();
         initListAdapter();
         initListView();
+=======
+        mRootView= inflater.inflate(R.layout.fragment_main, container, false);
+        mForecastList  = new ArrayList<>();
+        initViews();
+        initListAdapter();
+>>>>>>> 04aaad6bd9704311fed3c92587cc4684e3a482fb
 
         return mRootView;
     }
 
+<<<<<<< HEAD
     private void initListView() {
         mForecastListView = (ListView) mRootView.findViewById(R.id.listview_forecast);
         mForecastListView.setAdapter(mForecastAdapter);
         mForecastListView.setOnItemClickListener(mDayDetailClickHandler);
+=======
+    private void initViews() {
+        mForecastListView = (ListView) mRootView.findViewById(R.id.listview_forecast);
+        mForecastListView.setAdapter(mForecastAdapter);
+>>>>>>> 04aaad6bd9704311fed3c92587cc4684e3a482fb
     }
 
     private void initListAdapter() {
@@ -87,6 +109,7 @@ public class ForecastFragment extends Fragment {
                 R.id.list_item_forecast_text, mForecastList);
     }
 
+<<<<<<< HEAD
     private OnItemClickListener mDayDetailClickHandler = new OnItemClickListener(){
 
         @Override
@@ -97,6 +120,8 @@ public class ForecastFragment extends Fragment {
         }
     };
 
+=======
+>>>>>>> 04aaad6bd9704311fed3c92587cc4684e3a482fb
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
