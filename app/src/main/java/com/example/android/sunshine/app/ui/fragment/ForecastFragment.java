@@ -2,10 +2,12 @@ package com.example.android.sunshine.app.ui.fragment;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
@@ -56,6 +58,12 @@ public class ForecastFragment extends Fragment {
     private ArrayAdapter<String> mForecastAdapter;
 
     public ForecastFragment() {
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        startBackgroundWeatherTask();
     }
 
     @Override
@@ -118,7 +126,10 @@ public class ForecastFragment extends Fragment {
 
     private void startBackgroundWeatherTask() {
         FetchWeatherTask fetchWeatherTask = new FetchWeatherTask();
-        fetchWeatherTask.execute("94043");
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String location = prefs.getString(getString(R.string.pref_location_key),
+                getString(R.string.pref_location_default));
+        fetchWeatherTask.execute(location);
     }
 
     /**
