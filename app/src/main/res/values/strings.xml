@@ -15,5 +15,6 @@
         <item>Thursday - Rainy - 84/65</item>
         <item>Friday - Sunny - 79/65</item>
     </string-array>
+    <string name="title_activity_detail">DetailActivity</string>
 
 </resources>
