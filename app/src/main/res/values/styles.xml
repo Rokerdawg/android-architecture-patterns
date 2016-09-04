@@ -5,16 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
 
-<<<<<<< HEAD
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-=======
->>>>>>> 04aaad6bd9704311fed3c92587cc4684e3a482fb
 </resources>
