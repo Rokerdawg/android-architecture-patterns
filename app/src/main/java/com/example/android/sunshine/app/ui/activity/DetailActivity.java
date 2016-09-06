@@ -2,13 +2,17 @@ package com.example.android.sunshine.app.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
 import com.example.android.sunshine.app.R;
@@ -21,11 +25,10 @@ public class DetailActivity extends ActionBarActivity {
         setContentView(R.layout.activity_detail);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new DetailFragment())
                     .commit();
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,26 +57,66 @@ public class DetailActivity extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class DetailFragment extends Fragment {
+        ShareActionProvider mShareActionProvider;
+        private static final String LOG_TAG = DetailFragment.class.getSimpleName();
+        private static final String FORECAST_SHARE_HASHTAG = "#shareweather";
+        private String mShareWeatherStr;
         TextView mWeatherView;
         Intent mWeatherInfoIntent;
 
-        public PlaceholderFragment() {
+        public DetailFragment() {
+            // Set flag that this fragment has an OptionsMenu - else OptionsMenu wont be called
+            setHasOptionsMenu(true);
         }
+
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-
             View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
             mWeatherView = (TextView)rootView.findViewById(R.id.weather_info_text);
             mWeatherInfoIntent = getActivity().getIntent();
             if (mWeatherInfoIntent != null && mWeatherInfoIntent.hasExtra(Intent.EXTRA_TEXT)){
-                String dayForecastStr = mWeatherInfoIntent.getStringExtra(Intent.EXTRA_TEXT);
-                mWeatherView.setText(dayForecastStr);
+                mShareWeatherStr = mWeatherInfoIntent.getStringExtra(Intent.EXTRA_TEXT);
+                mWeatherView.setText(mShareWeatherStr);
             }
 
             return rootView;
+        }
+
+        @Override
+        public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            setHasOptionsMenu(true);
+        }
+
+        @Override
+        public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+            super.onCreateOptionsMenu(menu, inflater);
+            inflater.inflate(R.menu.detail_fragment, menu);
+            menu.clear();
+            MenuItem item = menu.findItem(R.id.share_weather_forecast);
+            mShareActionProvider = (ShareActionProvider) item.getActionProvider();
+            //Attach an intent to this ShareActionProvider
+            if (mShareActionProvider != null){
+                mShareActionProvider.setShareIntent(createShareForecastIntent());
+            }else{
+                Log.d(LOG_TAG, "onCreateOptionsMenu: Share Action Provider is null?");
+            }
+
+        }
+
+        // Call to update the share intent
+        private Intent createShareForecastIntent() {
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            // This flag ensures that on pressing back - you stay within calling application of
+            // intent, not the application handling the share intent
+            shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+            // Let framework know that we are sharing plain text
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, mShareWeatherStr + FORECAST_SHARE_HASHTAG);
+            return shareIntent;
         }
     }
 }
