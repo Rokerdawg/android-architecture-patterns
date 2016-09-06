@@ -7,6 +7,7 @@
     <string name="action_refresh">Refresh</string>
     <string name="open_weather_api_key">c1ea15359b32bb7747ad08296e2dd42b</string>
 
+    <!-- TODO - Remove - mock data for weather list -->
     <string-array name="forecastList">
         <item>Today Sunny - 88/63</item>
         <item>Tomorrow - Foggy - 70/40</item>
@@ -15,9 +16,24 @@
         <item>Thursday - Rainy - 84/65</item>
         <item>Friday - Sunny - 79/65</item>
     </string-array>
+
     <string name="title_activity_detail">DetailActivity</string>
     <string name="settings_activity">Settings Activity</string>
+
+    <!-- Location preference strings -->
     <string name="pref_location_key">location</string>
     <string name="pref_location_label">Location</string>
     <string name="pref_location_default">94043</string>
+
+    <!-- Temperature units preference strings -->
+    <string name="pref_units_key" translatable="false">units</string>
+    <string name="pref_units_label_metric">Metric</string>
+    <string name="pref_units_label_imperial">Imperial</string>
+    <string name="pref_units_metric" translatable="false">metric</string>
+    <string name="pref_units_imperial" translatable="false">imperial</string>
+    <string name="units">metric</string>
+    <string name="temperature_title">Temperature Units</string>
+    <string name="temperature_summary">Please select unit of measurement</string>
+    <string name="pref_units_label">Temperature Units</string>
+    <string name="open_in_map">Open in map</string>
 </resources>
