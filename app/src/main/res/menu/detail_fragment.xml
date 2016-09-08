@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/share_weather_forecast"
-        android:actionProviderClass="android.widget.ShareActionProvider"
+        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"
         android:title="@string/share"
         android:visible="true"
         app:showAsAction="ifRoom|withText" />

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,10 +13,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ShareActionProvider;
 import android.widget.TextView;
+import android.support.v7.widget.ShareActionProvider;
 
 import com.example.android.sunshine.app.R;
+
+import static android.support.v4.view.MenuItemCompat.*;
 
 public class DetailActivity extends ActionBarActivity {
 
@@ -93,18 +96,23 @@ public class DetailActivity extends ActionBarActivity {
 
         @Override
         public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-            super.onCreateOptionsMenu(menu, inflater);
+            // Inflate the menu; this adds items to the action bar if it is present.
             inflater.inflate(R.menu.detail_fragment, menu);
-            menu.clear();
-            MenuItem item = menu.findItem(R.id.share_weather_forecast);
-            mShareActionProvider = (ShareActionProvider) item.getActionProvider();
-            //Attach an intent to this ShareActionProvider
-            if (mShareActionProvider != null){
-                mShareActionProvider.setShareIntent(createShareForecastIntent());
-            }else{
-                Log.d(LOG_TAG, "onCreateOptionsMenu: Share Action Provider is null?");
-            }
 
+            // Retrieve the share menu item
+            MenuItem menuItem = menu.findItem(R.id.share_weather_forecast);
+
+            // Get the provider and hold onto it to set/change the share intent.
+            ShareActionProvider mShareActionProvider =
+                    (ShareActionProvider) getActionProvider(menuItem);
+
+            // Attach an intent to this ShareActionProvider.  You can update this at any time,
+            // like when the user selects a new piece of data they might like to share.
+            if (mShareActionProvider != null ) {
+                mShareActionProvider.setShareIntent(createShareForecastIntent());
+            } else {
+                Log.d(LOG_TAG, "Share Action Provider is null?");
+            }
         }
 
         // Call to update the share intent
