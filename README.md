@@ -6,3 +6,7 @@ The Android framework offers a lot of flexibility when it comes to defining how 
 In this project I will present the same application (a weather forecasting service) implemented using different architectural concepts and tools.
 
 This project can be used for reference or as a starting point for creating your own apps. The focus here is on code structure, architecture, testing and maintainability. However, bear in mind that there are many ways to build apps with these architectures and tools, depending on your priorities, so these shouldn't be considered canonical examples. The UI is deliberately kept simple.
+
+Why a weather application?
+
+The aim of the app is to be simple enough that it's understood quickly, but complex enough to showcase difficult design decisions and testing scenarios. Check out the app's specification.
