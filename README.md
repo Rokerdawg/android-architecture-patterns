@@ -1,16 +1,8 @@
-Sunshine
+Android Architecture Patterns
 ========
 
-Sunshine is the companion Android app for the Udacity course [Developing Android Apps: Android Fundamentals](https://www.udacity.com/course/ud853).
+The Android framework offers a lot of flexibility when it comes to defining how to organize and architect an Android app. This freedom, whilst very valuable, can also result in apps with large classes, inconsistent naming and architectures (or lack of) that can make testing, maintaining and extending difficult.
 
-Take the course to find out how to build this app a step at a time, and eventually create your own Android App!
+In this project I will present the same application (a weather forecasting service) implemented using different architectural concepts and tools.
 
-This is the second version of the Sunshine code. The repository has been updated on:
-
-* **February 13th, 2015** - Major update
-* February 25, 2015 - Minor bug fixes
-* March 4th, 2015 - Minor bug fixes
-
-For the original version, please go [here](https://github.com/udacity/Sunshine).
-
-A changelog for the course can be found [here](https://docs.google.com/a/knowlabs.com/document/d/193xJb_OpcNCqgquMhxPrMh05IEYFXQqt0S6-6YK8gBw/pub).
+This project can be used for reference or as a starting point for creating your own apps. The focus here is on code structure, architecture, testing and maintainability. However, bear in mind that there are many ways to build apps with these architectures and tools, depending on your priorities, so these shouldn't be considered canonical examples. The UI is deliberately kept simple.
